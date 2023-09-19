@@ -1,12 +1,16 @@
 {
-  "name": "elysia",
+  "name": "elysia-with-cursor",
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/bearer": "^0.6.0",
+    "@elysiajs/swagger": "^0.6.2",
+    "@prisma/client": "^5.3.1",
+    "elysia": "latest",
+    "prisma": "^5.3.1"
   },
   "devDependencies": {
     "bun-types": "latest"
