@@ -29,6 +29,10 @@ app.get('/', () => {
   };
 });
 
+function hashPassword(password: string) {
+  return Bun.password.hashSync(password);
+}
+
 app.post(
   '/register',
   async ({ body, db }) => {
@@ -46,7 +50,7 @@ app.post(
     await db.user.create({
       data: {
         email,
-        password
+        password: hashPassword(password)
       }
     });
     return {
@@ -54,6 +58,38 @@ app.post(
     };
   },
   registrationSchema
+);
+
+app.post(
+  '/login',
+  async ({ body, db }) => {
+    const { email, password } = body;
+    const user = await db.user.findUnique({
+      where: {
+        email
+      }
+    });
+    if (!user) {
+      return {
+        error: 'User not found'
+      };
+    }
+    const isPasswordValid = Bun.password.verifySync(password, user.password);
+    if (!isPasswordValid) {
+      return {
+        error: 'Invalid password'
+      };
+    }
+    return {
+      message: 'User logged in successfully'
+    };
+  },
+  {
+    body: t.Object({
+      email: t.String(),
+      password: t.String()
+    })
+  }
 );
 
 const PORT = process.env.PORT ?? 3000;
