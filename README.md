@@ -5,6 +5,10 @@ To install the dependencies, run:
 ```bash
 bun install
 ```
+To run the database migrations, run: <em>(NOTE: Make sure to add your Database connection URL in the <strong>.env</strong> file first.)</em>
+```
+bunx prisma migrate dev
+```
 
 ## Development
 To start the development server run:
