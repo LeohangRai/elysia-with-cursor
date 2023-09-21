@@ -1,4 +1,4 @@
-import { Elysia, t } from 'elysia';
+import { Elysia } from 'elysia';
 import { bearer } from '@elysiajs/bearer';
 import { authPlugin } from './auth/auth.plugin';
 
