@@ -1,17 +1,14 @@
-import { PrismaClient } from '@prisma/client';
 import { t } from 'elysia';
 
-export const registrationSchema = {
-  body: t.Object({
-    email: t.String(),
-    password: t.String(),
-    confirmPassword: t.String()
-  })
-};
+export const registrationBodySchema = t.Object({
+  email: t.String({
+    format: 'email',
+    default: 'user@example.com'
+  }),
+  password: t.String(),
+  confirmPassword: t.String()
+});
 
-export const loginSchema = {
-  body: t.Object({
-    email: t.String(),
-    password: t.String()
-  })
-};
+export const loginBodySchema = t.Omit(registrationBodySchema, [
+  'confirmPassword'
+]);

@@ -9,6 +9,7 @@
     "@elysiajs/bearer": "^0.6.0",
     "@elysiajs/swagger": "^0.6.2",
     "@prisma/client": "^5.3.1",
+    "@sinclair/typebox": "^0.31.15",
     "elysia": "latest",
     "prisma": "^5.3.1"
   },
