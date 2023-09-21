@@ -19,7 +19,9 @@ export async function register({ body, db }: RegistrationContext) {
     return {
       message: 'User registered successfully'
     };
+    /* eslint-disable */
   } catch (e: any) {
+    /* eslint-enable */
     return {
       error: e.message
     };
@@ -48,7 +50,9 @@ export async function login({ body, db }: LoginContext) {
     return {
       message: 'User logged in successfully'
     };
+    /* eslint-disable */
   } catch (e: any) {
+    /* eslint-enable */
     return {
       error: e.message
     };

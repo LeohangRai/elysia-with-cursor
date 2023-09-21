@@ -1,10 +1,10 @@
 import { PrismaClient } from '@prisma/client';
 import { Context } from 'elysia';
 
-export interface LoginContext extends Context {
+export type LoginContext = {
   body: {
     email: string;
     password: string;
   };
   db: PrismaClient;
-}
+} & Context;

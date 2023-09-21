@@ -5,7 +5,7 @@ import { register, login } from './auth.controller';
 
 export const authPlugin = new Elysia()
   .use(prismaSetupPlugin)
-  .onError(({ set, error }) => {
+  .onError(({ error }) => {
     // TODO: implement an error handler that sends different responses based on error status codes
     console.log('error:', error);
     return new Response('Oops! something went wrong!');
